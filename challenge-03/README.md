@@ -220,6 +220,6 @@ pessoa.apresentacao = function() {
 
 // Agora, apresente-se ;)
 
-'Olá! Eu sou o Abhener Calson, tenho 23 anos, Minha altura é 1.75m. Meu peso é 68Kg e, só hoje, eu ja caminhei 0 metros!
+Olá! Eu sou o Abhener Calson, tenho 23 anos, Minha altura é 1.75m. Meu peso é 68Kg e, só hoje, eu ja caminhei 0 metros!
 
 ```
