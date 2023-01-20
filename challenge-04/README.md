@@ -124,21 +124,25 @@ mostrar quantos assentos ainda podem ser ocupados, com a frase:
 citado acima, no lugar de "pessoas".
 */
 
-carro.adicionarPessoas = function(vaoEntrar) {
+carro.addPeople = function( peopleEntering ) {
+    
+    var allPeople = carro.quantidadeDePessoas + peopleEntering;
+    
+    if ( carro.quantidadeDePessoas === carro.assentos && allPeople >= carro.assentos)
+        return 'O carro já está lotado';
 
-    var totalPessoas = carro.quantidadeDePessoas + vaoEntrar;
-     if (carro.quantidadeDePessoas === carro.assentos) {
-        return 'O carro ja está lotado!';
+    if ( allPeople > carro.assentos ) {
+    var SingularOuPlural = FreeSeats === 1 ? 'pessoa' : 'pessoas';
+    var FreeSeats = carro.assentos - carro.quantidadeDePessoas;
+        return `Só cabem mais ${ FreeSeats } ${ SingularOuPlural } no carro.`
+    }
+
+    var pessoaSingularOuPlural = allPeople === 1 ? 'pessoa' : 'pessoas';
+    carro.quantidadeDePessoas += peopleEntering;
+    return `Já temos ${ allPeople } ${ pessoaSingularOuPlural } no carro.`
+
 }
-    if (totalPessoas > carro.assentos) {
-        var quantasPessoasCabem = carro.assentos - carro.quantidadeDePessoas;
-        var pessoasSobrando = quantasPessoasCabem === 1 ? 'pessoa' : 'pessoas';
-        return `só cabem mais ${quantasPessoasCabem} ${pessoasSobrando}`;
-}
-        carro.quantidadeDePessoas += vaoEntrar;
-        var pessoasNoCarro = carro.quantidadeDePessoas === 1 ? 'pessoa' : 'pessoas';
-        return `Já temos ${carro.quantidadeDePessoas} ${pessoasNoCarro} no carro!`;
-}
+
 
 
 /*
