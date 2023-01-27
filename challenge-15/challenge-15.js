@@ -1,4 +1,5 @@
 (function(){
+  'use strict';
 
 /*
 Envolva todo o código desse desafio em uma IIFE.
@@ -24,24 +25,23 @@ as seguintes características:
   que será instanciado.
 */
 
-function Person(name, lastName, age) {
-    this.name = name;
-    this.lastName = lastName;
+class Person {
+  constructor( name, lastName, age ) {
+    this.name = name,
+    this.lastName = lastName,
     this.age = age;
-    this.getFullName = function getFullName() {
-        return this.name + ' ' + this.lastName;
-        };
-    this.getAge = function getAge(){
-        return this.age;
-        };
-    this.addAge = function addAge(){
-        this.age += arguments[0];
-        return this;
+    this.getFullName = function() {
+      return this.name + ' ' + this.lastName;
     };
-
-   
-
+    this.getAge = function() {
+      return this.age;
+    };
+    this.addAge = function( newAge ) {
+      return Number( this.age ) + Number( newAge );
+    }
+  }
 }
+
 
 /*
 Crie 3 novos objetos usando o construtor acima. Os objetos serão novas
@@ -49,40 +49,41 @@ pessoas. As variáveis deverão ser o primeiro nome da pessoa. Passe os
 parâmetros corretamente para o construtor para criar as novas pessoas.
 Mostre as 3 novas pessoas criadas no console (Um console.log por pessoa).
 */
-console.log( 'Novas pessoas criadas à partir de Person:' );
-var abhener = new Person('Abhener', 'Calson', 24);
-var gabriel = new Person('Gabriel', 'Dickmann', 28);
-var felipe = new Person ('Felipe', 'Annunziata', 33);
+
+var abhener = new Person( 'Abhener', 'Calson', 24 );
+var gabriel = new Person ( 'Gabriel', 'Dickmann', 29 );
+var felipe = new Person ( 'Felipe', 'Annunziata', 33 );
 console.log( abhener );
 console.log( gabriel );
 console.log( felipe );
 
-
 /*
 Mostre no console o nome completo de cada pessoa.
 */
-console.log( '\nNomes das pessoas:' );
+
 console.log( abhener.getFullName() );
 console.log( gabriel.getFullName() );
 console.log( felipe.getFullName() );
+
+
 
 /*
 Mostre no console as idades de cada pessoa, com a frase:
 - "[NOME COMPLETO] tem [IDADE] anos."
 */
-console.log( '\nIdade das pessoas:' );
-console.log( `${abhener.getFullName()} tem ${abhener.getAge()} anos.` );
-console.log( `${gabriel.getFullName()} tem ${gabriel.getAge()} anos.` );
-console.log( `${felipe.getFullName()} tem ${felipe.getAge()} anos.` );
+
+console.log( `${ abhener.getFullName() } tem ${ abhener.getAge() } anos.`);
+console.log( `${ gabriel.getFullName() } tem ${ gabriel.getAge() } anos.` );
+console.log( `${ felipe.getFullName() } tem ${ felipe.getAge() } anos.` );
 
 /*
 Adicione alguns anos à cada pessoa, e mostre no console a nova idade de
 cada um. A frase deverá ser no formato:
 - "[NOME COMPLETO] agora tem [NOVA IDADE] anos."
 */
-console.log( '\nNova idade das pessoas:' );
-console.log( `${abhener.getFullName()} agora tem ${abhener.addAge(2).getAge()} anos` );
-console.log( `${gabriel.getFullName()} agora tem ${gabriel.addAge(2).getAge()} anos` );
-console.log( `${felipe.getFullName()} agora tem ${felipe.addAge(2).getAge()} anos` );
+
+console.log( `${ abhener.getFullName() } agora tem ${ abhener.addAge( 1 ) } anos.` )
+console.log( `${ gabriel.getFullName() } agora tem ${ gabriel.addAge( 2 ) } anos.` )
+console.log( `${ felipe.getFullName() } agora tem ${ felipe.addAge( 3 ) } anos.` )
 
 })();
